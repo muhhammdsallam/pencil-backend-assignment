@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const connecDatabase = (url)=>{
+const connectDatabase = (url)=>{
     mongoose.connect(url)
     .then(()=>console.log('Connected to database'))
 }
 
-module.exports = connecDatabase;
+module.exports = connectDatabase;
