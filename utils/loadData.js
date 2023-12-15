@@ -1,23 +1,20 @@
 const fs = require('fs');
 const csv = require('csv-parser');
-const {MongoClient,ObjectId} = require('mongodb');
+const connectDatabase = require('../database/connect');
+const Topic = require('../models/topic');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
 dotenv.config();
 
 async function loadData() {
-    
-    const client = new MongoClient(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-    await client.connect();
 
     try{
-        
-        const db = client.db(process.env.DB_NAME);
-        console.log('Connected to database');
+        // Connect to the database
+        await connectDatabase(process.env.MONGO_URI);
 
-        const collection = db.collection(process.env.TOPICS_COLLECTION);
-        // clear existing data from the collection
-        await collection.deleteMany({});
+        // Clear existing data from the collection
+        await Topic.deleteMany({});
 
         // read the data from the csv file
             const rows = [];
@@ -31,11 +28,10 @@ async function loadData() {
     
                 // build the hierarchial structure of the data and insert into the collection
                 const tree = buildTree(rows);
-                await insertIntoCollection(collection, tree);
+                await insertIntoCollection(tree);
                 console.log('Tree:', tree);
 
                 console.log('Data loaded successfully');
-                client.close();
             })
             .on('error', (error) => {
                 console.error('Error reading CSV:', error);
@@ -71,32 +67,29 @@ function buildTree(rows) {
     return tree;
 }
 
-async function insertIntoCollection(collection, tree, parentId = null) {
+async function insertIntoCollection(tree, parentId = null) {
+    const children = [];
 
-    const documents = [];
-  
     for (const [key, value] of Object.entries(tree)) {
-      const document = {
-        _id: new ObjectId(),
-        name: key,
-        parent: parentId,
-      };
-  
-      // Recursively insert data for the children
-      if (value && Object.keys(value).length > 0) {
-        const childNodes = await insertIntoCollection(collection, value, document._id);
-        if (childNodes && childNodes.length > 0) {
-          document.children = childNodes;
+        const topic = new Topic({
+            _id: new mongoose.Types.ObjectId(),
+            name: key,
+            parent: parentId,
+        });
+
+        await topic.save();
+
+        // Recursively insert data for the children
+        if (value && Object.keys(value).length > 0) {
+            const childObjects = await insertIntoCollection(value, topic._id);
+            topic.children = childObjects;
+            await topic.save();
         }
-      }
-  
-      documents.push(document);
+
+        children.push(topic);
     }
-  
-    // Insert the documents into the MongoDB collection
-    await collection.insertMany(documents);
-  
-    return documents; // Return the current level of the tree for recursive processing
-  }
+
+    return children;
+}
 
 loadData();

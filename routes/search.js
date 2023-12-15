@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const getAllQuestions = require('../controllers/getQuestions'); //importing the getAllProducts function from the products controller
+const getAllQuestions = require('../controllers/getQuestions');
+const getTopics = require('../controllers/getTopics');
 
 
-router.route('/').get(getAllQuestions); //get all products
+router.route('/').get(getTopics);
 
-module.exports = router; //export router to app.js
+module.exports = router;

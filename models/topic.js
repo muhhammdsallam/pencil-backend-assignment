@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 
 const topicSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-
-  children: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topic' }],
-  
-  parent: { type: mongoose.Schema.Types.ObjectId, ref: 'Topic' },
+    _id: mongoose.Schema.Types.ObjectId,
+    name: String,
+    parent: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic',
+    },
+    children: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic',
+    }],
 });
 
 const Topic = mongoose.model('Topic', topicSchema);
