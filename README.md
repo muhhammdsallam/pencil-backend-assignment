@@ -23,18 +23,14 @@ Consider a topic tree related to Biology:
 
 In order to make efficient and optimized queries to find the descendants of a given topic in the tree, I followed the Materialized Path Pattern which is simply that I store each node of the topics tree as a document with the following Schema as an example: 
 
+```bash
 Topic: {
-
   _id: new ObjectId('657dc4d34ee36a90678cb56e'),
-  
   name: 'Bacteria',
-  
   path: 'Biology/Cell Structure and Organisation/Prokaryotic Cells/Bacteria',
-  
   __v: 0
-  
 }
-
+```
 Here, the path attribute is crucial, representing the full path from the root to the current topic. It efficiently encapsulates the hierarchy, making it easy to navigate.
 
 ## How it Works:
@@ -50,9 +46,9 @@ Indexing the path attribute further enhances query performance.
 # Example request URL
 
 ## Endpoint
-
-http://localhost:3000/search?q="Movement of Substances"
-
+```bash
+http://localhost:3000/search?q=Movement of Substances
+```
 **This Topic has 3 Descendants :**
 
 **1- Define diffusion and describe its role in nutrient uptake and gaseous exchange in plants and humans**
