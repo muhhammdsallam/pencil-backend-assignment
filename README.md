@@ -25,10 +25,10 @@ In order to make efficient and optimized queries to find the descendants of a gi
 
 ```bash
 Topic: {
-  _id: new ObjectId('657dc4d34ee36a90678cb56e'),
-  name: 'Bacteria',
-  path: 'Biology/Cell Structure and Organisation/Prokaryotic Cells/Bacteria',
-  __v: 0
+      "_id": "657dc4d34ee36a90678cb56e",
+      "name": 'Bacteria',
+      "path": 'Biology/Cell Structure and Organisation/Prokaryotic Cells/Bacteria',
+      "__v": 0
 }
 ```
 Here, the path attribute is crucial, representing the full path from the root to the current topic. It efficiently encapsulates the hierarchy, making it easy to navigate.
@@ -46,7 +46,7 @@ Indexing the path attribute further enhances query performance.
 ## Question Schema
 
 ```bash
-{
+Question: {
         "_id": "657dc55fbe1c101b9d0a1d6f",
         "number": 187,
         "annotations": [
