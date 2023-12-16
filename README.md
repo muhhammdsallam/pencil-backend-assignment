@@ -10,10 +10,15 @@ The questions are annotated with topics that follow a hierarchical structure rep
 In order to make efficient and optimized queries to find the descendants of a given topic in the tree, I followed the Materialized Path Pattern which is simply that I store each node of the topics tree as a document with the following Schema as an example: 
 
 {
+
   _id: new ObjectId('657dc4d34ee36a90678cb56e'),
+  
   name: 'State, in simple terms, the relationship between cell function and cell structure for the following:',
+  
   path: 'Cell Structure and Organisation/State, in simple terms, the relationship between cell function and cell structure for the following:',
+  
   __v: 0
+  
 }
 
 Here we store the name of the topic and the unique path to that topic in the tree, the parent node path here is 'Cell Structure and Organisation'.
