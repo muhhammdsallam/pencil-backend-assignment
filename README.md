@@ -57,7 +57,14 @@ Question: {
     }
 ```
 
-Question Document stores the number of the questions and array of annotations' IDs refering to the topic document
+Question Document stores the number of the questions and array of annotations' IDs refering to the topic document.
+
+## Indexes
+
+I added index on the following fields to improve the query performance:
+- annotations field in question document
+- path field in topic document
+- name field in topic document
 
 # Example request URL
 
