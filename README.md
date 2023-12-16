@@ -9,18 +9,37 @@ The questions are annotated with topics that follow a hierarchical structure rep
 ## Topic Schema
 In order to make efficient and optimized queries to find the descendants of a given topic in the tree, I followed the Materialized Path Pattern which is simply that I store each node of the topics tree as a document with the following Schema as an example: 
 
+Example Topic Tree:
+Consider a topic tree related to Biology:
+
+markdown
+Copy code
+- Biology
+  - Cell Structure and Organisation
+    - Prokaryotic Cells
+      - Bacteria
+    - Eukaryotic Cells
+      - Animal Cells
+      - Plant Cells
+Document Representation:
+Each topic in the tree is stored as a document in your MongoDB collection using the Materialized Path Pattern:
+
+javascript
+Copy code
 Topic: {
-
   _id: new ObjectId('657dc4d34ee36a90678cb56e'),
-  
-  name: 'State, in simple terms, the relationship between cell function and cell structure for the following:',
-  
-  path: 'Cell Structure and Organisation/State, in simple terms, the relationship between cell function and cell structure for the following:',
-  
+  name: 'Bacteria',
+  path: 'Biology/Cell Structure and Organisation/Prokaryotic Cells/Bacteria',
   __v: 0
-  
 }
+Here, the path attribute is crucial, representing the full path from the root to the current topic. It efficiently encapsulates the hierarchy, making it easy to navigate.
 
-Here we store the name of the topic and the unique path to that topic in the tree, the parent node path here is 'Cell Structure and Organisation'.
+How it Works:
+Efficient Querying:
 
-This is an efficient way to look up for multiple descendants for a given topic specialy if we want to scale up the database.
+To find all descendants of a given topic, you can execute a query using a regular expression on the path attribute.
+For instance, to find all descendants of "Prokaryotic Cells," query for documents where the path starts with 'Biology/Cell Structure and Organisation/Prokaryotic Cells/'.
+Scalability:
+
+The Materialized Path Pattern scales well as it allows for efficient querying of descendants.
+Indexing the path attribute further enhances query performance.
