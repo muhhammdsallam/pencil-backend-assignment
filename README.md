@@ -9,7 +9,7 @@ The questions are annotated with topics that follow a hierarchical structure rep
 ## Topic Schema
 In order to make efficient and optimized queries to find the descendants of a given topic in the tree, I followed the Materialized Path Pattern which is simply that I store each node of the topics tree as a document with the following Schema as an example: 
 
-{
+Topic: {
 
   _id: new ObjectId('657dc4d34ee36a90678cb56e'),
   
