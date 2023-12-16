@@ -12,8 +12,6 @@ In order to make efficient and optimized queries to find the descendants of a gi
 Example Topic Tree:
 Consider a topic tree related to Biology:
 
-markdown
-Copy code
 - Biology
   - Cell Structure and Organisation
     - Prokaryotic Cells
@@ -24,22 +22,26 @@ Copy code
 Document Representation:
 Each topic in the tree is stored as a document in your MongoDB collection using the Materialized Path Pattern:
 
-javascript
-Copy code
 Topic: {
+
   _id: new ObjectId('657dc4d34ee36a90678cb56e'),
+  
   name: 'Bacteria',
+  
   path: 'Biology/Cell Structure and Organisation/Prokaryotic Cells/Bacteria',
+  
   __v: 0
+  
 }
+
 Here, the path attribute is crucial, representing the full path from the root to the current topic. It efficiently encapsulates the hierarchy, making it easy to navigate.
 
-How it Works:
-Efficient Querying:
+## How it Works:
+### Efficient Querying:
 
-To find all descendants of a given topic, you can execute a query using a regular expression on the path attribute.
+To find all descendants of a given topic, I'm executing the query using a regular expression on the path attribute.
 For instance, to find all descendants of "Prokaryotic Cells," query for documents where the path starts with 'Biology/Cell Structure and Organisation/Prokaryotic Cells/'.
-Scalability:
+### Scalability:
 
 The Materialized Path Pattern scales well as it allows for efficient querying of descendants.
 Indexing the path attribute further enhances query performance.
