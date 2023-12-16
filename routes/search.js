@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const getTopicDescendants = require('../controllers/getTopicDescendants');
+const getQuestions = require('../controllers/getQuestions');
 
 
-router.route('/').get(getTopicDescendants);
+router.route('/').get(getQuestions);
 
 module.exports = router;

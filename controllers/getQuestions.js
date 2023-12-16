@@ -8,7 +8,7 @@ const performance = require('perf_hooks').performance;
 //  @access public
 //  @param  topicName
 //  @return array of question numbers
-const getTopicDescendants = async (req, res) => {
+const getQuestions = async (req, res) => {
   try {
     const start = performance.now();
     // Get the descendants of the topic received in the request
@@ -53,4 +53,4 @@ const getTopicDescendants = async (req, res) => {
 
 
 
-module.exports = getTopicDescendants;
+module.exports = getQuestions;
