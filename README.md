@@ -7,7 +7,6 @@ This assignment focuses on querying questions based on their associated annotati
 The questions are annotated with topics that follow a hierarchical structure represented by a topic tree. Each question can have one or more annotations, each corresponding to a topic in the tree.
 
 ## Topic Schema
-In order to make efficient and optimized queries to find the descendants of a given topic in the tree, I followed the Materialized Path Pattern which is simply that I store each node of the topics tree as a document with the following Schema as an example: 
 
 Example Topic Tree:
 Consider a topic tree related to Biology:
@@ -19,8 +18,10 @@ Consider a topic tree related to Biology:
     - Eukaryotic Cells
       - Animal Cells
       - Plant Cells
-Document Representation:
-Each topic in the tree is stored as a document in your MongoDB collection using the Materialized Path Pattern:
+        
+### Document Representation:
+
+In order to make efficient and optimized queries to find the descendants of a given topic in the tree, I followed the Materialized Path Pattern which is simply that I store each node of the topics tree as a document with the following Schema as an example: 
 
 Topic: {
 
