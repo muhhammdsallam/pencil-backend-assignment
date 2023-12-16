@@ -53,17 +53,17 @@ Indexing the path attribute further enhances query performance.
 
 http://localhost:3000/search?q="Movement of Substances"
 
-This Topic has 3 Descendants :
+**This Topic has 3 Descendants :**
 
-1- Define diffusion and describe its role in nutrient uptake and gaseous exchange in plants and humans
+**1- Define diffusion and describe its role in nutrient uptake and gaseous exchange in plants and humans**
 
 This Topic is an annotation to 4 Question which are [1, 13, 40, 61]
 
-2- Define osmosis and describe the effects of osmosis on plant and animal tissues
+**2- Define osmosis and describe the effects of osmosis on plant and animal tissues**
 
 This Topic is an annotation to 0 questions
 
-3- Define active transport and discuss its importance as an energy-consuming process by which substances are transported against a concentration gradient, as in ion uptake by root hairs and uptake of glucose by cells in the villi
+**3- Define active transport and discuss its importance as an energy-consuming process by which substances are transported against a concentration gradient, as in ion uptake by root hairs and uptake of glucose by cells in the villi**
 
 This Topic is an annotation to 2 Questions which are [1, 187]
 
