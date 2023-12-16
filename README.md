@@ -75,3 +75,8 @@ To access the server connect to the following IP address
 ```bash
 http://54.91.197.6:3000/
 ```
+
+# Accessing the Database
+
+To access the Database you can use the MONGO_URI in the .env file
+
