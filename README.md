@@ -67,9 +67,10 @@ And this is the final Questions array returned with the related questions.
 
 ![image](https://github.com/muhhammdsallam/pencil-backend-assignment/assets/81472165/3e526069-4c57-4857-bdc5-c4a09a7afb35)
 
-I hosted the Server on AWS EC2 instance in order to allow you query the topic
 
 # Accessing the server
+
+I hosted the Server on AWS EC2 instance in order to allow you query the topic
 
 To access the server connect to the following IP address
 
