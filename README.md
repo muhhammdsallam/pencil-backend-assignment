@@ -47,7 +47,7 @@ Indexing the path attribute further enhances query performance.
 
 ## Endpoint
 ```bash
-http://localhost:3000/search?q=Movement of Substances
+http://localhost:3000/search?q=Movement%20of%20Substances
 ```
 **This Topic has 3 Descendants :**
 
