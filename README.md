@@ -43,6 +43,22 @@ For instance, to find all descendants of "Prokaryotic Cells," query for document
 The Materialized Path Pattern scales well as it allows for efficient querying of descendants.
 Indexing the path attribute further enhances query performance.
 
+## Question Schema
+
+```bash
+{
+        "_id": "657dc55fbe1c101b9d0a1d6f",
+        "number": 187,
+        "annotations": [
+            "657dc4d54ee36a90678cb57e",
+            "657dc4e14ee36a90678cb65c"
+        ],
+        "__v": 0
+    }
+```
+
+Question Document stores the number of the questions and array of annotations' IDs refering to the topic document
+
 # Example request URL
 
 ## Endpoint
