@@ -1,5 +1,6 @@
 const Topic = require('../models/topic');
 const Question = require('../models/question');
+const performance = require('perf_hooks').performance;
 
 
 //  @desc   returns an array of question numbers that have annotations that are descendants of the topic received in the request
@@ -9,6 +10,7 @@ const Question = require('../models/question');
 //  @return array of question numbers
 const getTopicDescendants = async (req, res) => {
   try {
+    const start = performance.now();
     // Get the descendants of the topic received in the request
     const topicName = req.query.q;
 
@@ -34,7 +36,12 @@ const getTopicDescendants = async (req, res) => {
       return res.status(404).json({ error: 'Questions not found' });
     }
 
+    const end = performance.now();
+    const duration = end - start;
+    console.log(`Query took ${duration} milliseconds`);
+
     res.json(questions.map((question) => question.number));
+    console.log('Questions loaded successfully');
 
   } catch (error) {
     console.error('Error retrieving descendants:', error);
