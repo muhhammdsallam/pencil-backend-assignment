@@ -9,6 +9,9 @@ const topicSchema = new mongoose.Schema({
 // Indexing the path field for efficient search
 topicSchema.index({ path: 1 });
 
+// Indexing the name field for efficient search
+topicSchema.index({ name: 1 });
+
 const Topic = mongoose.model('Topic', topicSchema);
 
 module.exports = Topic;
