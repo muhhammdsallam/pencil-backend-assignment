@@ -1,6 +1,12 @@
 const Topic = require('../models/topic');
 const Question = require('../models/question');
 
+
+//  @desc   returns an array of question numbers that have annotations that are descendants of the topic received in the request
+//  @route  GET /search?q=topicName
+//  @access public
+//  @param  topicName
+//  @return array of question numbers
 const getTopicDescendants = async (req, res) => {
   try {
     // Get the descendants of the topic received in the request
@@ -13,34 +19,22 @@ const getTopicDescendants = async (req, res) => {
     }
 
 
-    const path = queryTopic.path;
     // Find descendants
-    const queryDescendants = { path: { $regex: `^${path}`, $ne: path } };
-    const descendantTopics = await Topic.find(queryDescendants);
+    const regEx = new RegExp(`^${topicName}`);
+    const descendantTopics_ids = await Topic.find({ path: regEx }).select('_id');
 
-    if (!descendantTopics || descendantTopics.length === 0) {
+    if (!descendantTopics_ids || descendantTopics_ids.length === 0) {
       return res.status(404).json({ error: 'Descendants not found' });
     }
-    
 
-    // Extract names and paths of descendant topics
-    const descendantData = descendantTopics.map((topic) => ({
-      Id: topic._id,
-      name: topic.name,
-      path: topic.path,
-    }));
+    // get questions that have annotations that are descendants of the topic 
+   const questions = await Question.find({ annotations: { $in: descendantTopics_ids } }).lean();
+     
+    if (!questions || questions.length === 0) {
+      return res.status(404).json({ error: 'Questions not found' });
+    }
 
-    console.log(descendantData);
-
-    // get questions that have annotations that are descendants of the topic
-   const query = { annotations: { $in: descendantTopics.map((topic) => topic._id) } };
-   const questions = await Question.find(query);
-
-  // Extract question numbers
-  const questionNumbers = questions.map((question) => question.number);
-
-  console.log(questions);
-  res.json(questionNumbers);
+    res.json(questions.map((question) => question.number));
 
   } catch (error) {
     console.error('Error retrieving descendants:', error);
@@ -50,15 +44,6 @@ const getTopicDescendants = async (req, res) => {
   
 };
 
-// const getQuestions = async (req, res) => {
 
-//   try {
-
-//     // Get the descendants of the topic received in the request
-//     const topicName = req.query.q;
-
-
-//   }
-// }    
 
 module.exports = getTopicDescendants;
