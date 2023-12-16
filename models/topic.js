@@ -1,17 +1,13 @@
 const mongoose = require('mongoose');
 
 const topicSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    name: String,
-    parent: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Topic',
-    },
-    children: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Topic',
-    }],
+  _id: mongoose.Schema.Types.ObjectId,
+  name: { type: String, required: true},
+  path: { type: String},
 });
+
+// Indexing the path field for efficient search
+topicSchema.index({ path: 1 });
 
 const Topic = mongoose.model('Topic', topicSchema);
 

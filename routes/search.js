@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const getAllQuestions = require('../controllers/getQuestions');
-const getTopics = require('../controllers/getTopics');
+const getQuestions = require('../controllers/getQuestions');
+const getTopicDescendances = require('../controllers/getTopicDescendances');
 
 
-router.route('/').get(getTopics);
+router.route('/').get(getTopicDescendances);
 
 module.exports = router;
