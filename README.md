@@ -51,7 +51,7 @@ Indexing the path attribute further enhances query performance.
 
 ## Endpoint 1
 
-http://localhost:3000/search?q=Movement of Substances
+http://localhost:3000/search?q="Movement of Substances"
 
 This Topic has 3 Descendants and 5 related questions to the annotations
 
