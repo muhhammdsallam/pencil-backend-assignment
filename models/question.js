@@ -8,8 +8,6 @@ const questionSchema = new mongoose.Schema({
   
 });
 
-// Indexing the number field for efficient search
-questionSchema.index({ number: 1 });
 // Indexing the annotations field for efficient search
 questionSchema.index({ annotations: 1 });
 
