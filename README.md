@@ -47,9 +47,9 @@ For instance, to find all descendants of "Prokaryotic Cells," query for document
 The Materialized Path Pattern scales well as it allows for efficient querying of descendants.
 Indexing the path attribute further enhances query performance.
 
-# Example request URLs
+# Example request URL
 
-## Endpoint 1
+## Endpoint
 
 http://localhost:3000/search?q="Movement of Substances"
 
