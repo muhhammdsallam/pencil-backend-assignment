@@ -68,3 +68,10 @@ And this is the final Questions array returned with the related questions.
 ![image](https://github.com/muhhammdsallam/pencil-backend-assignment/assets/81472165/3e526069-4c57-4857-bdc5-c4a09a7afb35)
 
 
+# Accessing the server
+
+To access the server connect to the following IP address
+
+```bash
+http://54.91.197.6:3000/
+```
