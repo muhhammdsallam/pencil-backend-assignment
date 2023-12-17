@@ -45,7 +45,7 @@ const getQuestions = async (req, res) => {
     console.log(`Query took ${duration} milliseconds`);
 
 
-    res.json(questions.map((question) => question.number));
+    res.json(questions);
     console.log('Questions loaded successfully');
 
     // printing the descendants for testing purposes
