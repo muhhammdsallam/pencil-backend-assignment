@@ -25,10 +25,10 @@ In order to make efficient and optimized queries to find the descendants of a gi
 
 ```bash
 Topic: {
-  _id: new ObjectId('657dc4d34ee36a90678cb56e'),
-  name: 'Bacteria',
-  path: 'Biology/Cell Structure and Organisation/Prokaryotic Cells/Bacteria',
-  __v: 0
+      "_id": "657dc4d34ee36a90678cb56e",
+      "name": 'Bacteria',
+      "path": 'Biology/Cell Structure and Organisation/Prokaryotic Cells/Bacteria',
+      "__v": 0
 }
 ```
 Here, the path attribute is crucial, representing the full path from the root to the current topic. It efficiently encapsulates the hierarchy, making it easy to navigate.
@@ -42,6 +42,29 @@ For instance, to find all descendants of "Prokaryotic Cells," query for document
 
 The Materialized Path Pattern scales well as it allows for efficient querying of descendants.
 Indexing the path attribute further enhances query performance.
+
+## Question Schema
+
+```bash
+Question: {
+        "_id": "657dc55fbe1c101b9d0a1d6f",
+        "number": 187,
+        "annotations": [
+            "657dc4d54ee36a90678cb57e",
+            "657dc4e14ee36a90678cb65c"
+        ],
+        "__v": 0
+    }
+```
+
+Question Document stores the number of the questions and array of annotations' IDs refering to the topic document.
+
+## Indexes
+
+I added index on the following fields to improve the query performance:
+- annotations field in question document
+- path field in topic document
+- name field in topic document
 
 # Example request URL
 
@@ -67,4 +90,18 @@ And this is the final Questions array returned with the related questions.
 
 ![image](https://github.com/muhhammdsallam/pencil-backend-assignment/assets/81472165/3e526069-4c57-4857-bdc5-c4a09a7afb35)
 
+
+# Accessing the server
+
+I hosted the Server on AWS EC2 instance in order to allow you query the topic
+
+To access the server connect to the following IP address
+
+```bash
+http://54.91.197.6:3000/
+```
+
+# Accessing the Database
+
+To access the Database you can use the MONGO_URI in the .env file
 
