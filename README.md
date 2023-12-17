@@ -98,7 +98,7 @@ I hosted the Server on AWS EC2 instance in order to allow you query the topic
 To access the server connect to the following IP address
 
 ```bash
-http://54.91.197.6:3000/
+http://34.224.32.242:3000/
 ```
 
 # Accessing the Database
